@@ -1,0 +1,85 @@
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form [formGroup]="updateForm">
+          <!-- Username -->
+          <div class="mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Edit your First Name  <mat-icon>account_box</mat-icon></mat-label>
+              <input matInput formControlName="firstName" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" >
+              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <mat-error *ngIf="f.firstName.errors.required">First Name is required</mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Edit your Last Name  <mat-icon>account_box</mat-icon></mat-label>
+              <input matInput formControlName="lastName" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" >
+              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <mat-error *ngIf="f.lastName.errors.required">Last Name is required</mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Email can not be changed <mat-icon>email</mat-icon></mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="email" required readonly class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
+                  <mat-error *ngIf="f.email.errors.email">Email must be a valid email address</mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Edit your password <mat-icon>lock_open</mat-icon></mat-label>
+              <input type="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <!--hint-->
+              <!--Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters-->
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <mat-error *ngIf="f.password.errors.required">Password is required</mat-error>
+                <mat-error *ngIf="f.password.errors.pattern">Password must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characterss</mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Confirm your password <mat-icon>lock_open</mat-icon></mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword"  required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <!--hint-->
+              <!--double check the password, must be same as the password-->
+              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <mat-error *ngIf="f.confirmPassword.errors.mustMatch">Password must match</mat-error>
+              </div>
+            </mat-form-field>
+          </div>
+           
+          <!-- University -->
+          <div class="mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Edit your university <mat-icon>school</mat-icon></mat-label>
+              <input matInput formControlName="university" class="form-control" >
+            </mat-form-field>
+          </div>
+          </form>
+          
+          <button (click)="saveForm()">Update</button>
+          <button (click)="resetForm()">Reset</button>
+
+    </div>
+</div>

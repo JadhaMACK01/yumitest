@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <h1 class="title">Skillsme University</h1>
+  <nav>
+    <a routerLink="/about" routerLinkActive="active">About Us</a>
+    <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    <a routerLink="/:email/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/login" routerLinkActive="active" target="_blank">Login</a>
+    
+  </nav>
+  <div [@routeAnimation]="getAnimationData(routerOutlet)">
+    <router-outlet #routerOutlet="outlet"></router-outlet>
+  </div>
+</div>
